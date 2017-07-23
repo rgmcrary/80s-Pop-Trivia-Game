@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+            <header class="col-sm-12 heading"><img src="assets/images/banner.jpg" alt="banner"></header>
+        </div>
+    </div>
+
+    <div class="container gameSpace">
+
+        <!--Timer  -->
+        <div class="row">
+            <div class="col-md-12 countdown">
+                <h1 class="timer"><span id="timer"></span></h1>
+                <button btn <button type="button" class="btn btn-primary" id="startButton">Click to Start</button>
+            </div>
+        </div>
+
+        <!--Questions  -->
+        <div class="row">
+            <div class="col-md-12 question"></div>
+        </div>
+
+        <!--Answer Bank  -->
+        <div class="row">
+            <div class="col-md-12 answers"></div>
+        </div>
+        <!--Answer with pic  -->
+        <div class="row">
+            <div class="col-md-12 correctAns"></div>
+            <div class="col-md-12 image"></div>
+        </div>
+        <!--Results  -->
+        <div class="row">
+            <div class="col-md-12 results">
+                <div class="correct">Correct Answers: <span id="correct"></span></div>
+                <div class="incorrect">Incorrect Answers: <span id="incorrect"></span></div>
+                <div class="missed">Missed Answers: <span id="missed"></span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--JavaScript References  -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="assets/javascripts/bootstrap.min.js"></script>
+    </script>
+    <script src="assets/javascripts/app.js"></script>
+
+</body>
+
+</html>
