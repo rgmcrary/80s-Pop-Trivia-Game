@@ -17,7 +17,7 @@ var quesAns = [
     ques: "What vampire movie starred David Bowie and Susan Sarandan?",
     ans: [
       { choice: "The Lost Boys", isAnswer: false },
-      { choice: "The Hunger", isAnswer: true },
+      { choice: "The Hunger", isAnswer: true, ansImg: "hunger.jpg" },
       { choice: "Fright Night", isAnswer: false },
       { choice: "Once Bitten", isAnswer: false }
     ]
@@ -27,14 +27,14 @@ var quesAns = [
     ans: [
       { choice: "Tape measure", isAnswer: false },
       { choice: "Shears", isAnswer: false },
-      { choice: "Safety pin", isAnswer: true },
+      { choice: "Safety pin", isAnswer: true, ansImg: "safetypins.jpg" },
       { choice: "Thimble", isAnswer: false }
     ]
   },
   {
     ques: "What song title became a shirt slogan that was popular among teens?",
     ans: [
-      { choice: "Relax", isAnswer: true },
+      { choice: "Relax", isAnswer: true, ansImg: "relax.jpg" },
       { choice: "Venus", isAnswer: false },
       { choice: "Vacation", isAnswer: false },
       { choice: "Don't Stop Believing", isAnswer: false }
@@ -44,7 +44,7 @@ var quesAns = [
     ques: "What was a popular valley girl term of disgust?",
     ans: [
       { choice: "As if", isAnswer: false },
-      { choice: "Gag me with a spoon", isAnswer: true },
+      { choice: "Gag me with a spoon", isAnswer: true, ansImg: "gagme.jpg" },
       { choice: "Ewwwww", isAnswer: false },
       { choice: "No way", isAnswer: false }
     ]
@@ -55,7 +55,11 @@ var quesAns = [
       { choice: "Pretty in Pink", isAnswer: false },
       { choice: "Weird Science", isAnswer: false },
       { choice: "Real Genius", isAnswer: false },
-      { choice: "The Breakfast Club", isAnswer: true }
+      {
+        choice: "The Breakfast Club",
+        isAnswer: true,
+        ansImg: "breakfastclub.jpg"
+      }
     ]
   }
 ];
@@ -84,7 +88,13 @@ var game = {
   getQues: function() {
     $(".question").text(quesAns[quesIndex].ques);
 
+    // Reset Screen
+    $(".feedback").text("");
     $(".answers").text("");
+    $(".correctAns").text("");
+    $(".question").show();
+    $(".answers").show();
+    $(".image").html("");
 
     for (var j = 0; j < quesAns[quesIndex].ans.length; j++) {
       $(".answers").append(
@@ -95,7 +105,7 @@ var game = {
 
       if (quesAns[quesIndex].ans[j].isAnswer === true) {
         currentAns = quesAns[quesIndex].ans[j].choice;
-        ansImg = quesAns[quesIndex].ans[j].img;
+        ansImg = quesAns[quesIndex].ans[j].ansImg;
       }
     }
 
@@ -103,15 +113,16 @@ var game = {
 
     $(".timer").show();
 
-    game.timer(11);
+    game.timer(10);
   },
 
   // Question Timer
 
   timer: function(counter) {
+    $(".timer").text(counter + " Seconds Left");
     interval = setInterval(function() {
       counter--;
-      $(".timer").text(counter);
+      $(".timer").text(counter + " Seconds Left");
       if (counter === 0) {
         clearInterval(interval);
         game.ansCompare();
@@ -124,16 +135,21 @@ var game = {
   ansCompare: function() {
     userSelect = $(this).text();
     clearInterval(interval);
+    var comment;
     if (userSelect === currentAns) {
       correct++;
+      comment = "GREAT JOB!!";
     } else if (userSelect === "") {
       missed++;
+      comment = "YOU DIDN'T ANSWER!!";
     } else {
       incorrect++;
+      comment = "WRONG!!";
     }
-
-    $(".answers").text(currentAns);
-    $(".image").html(ansImg);
+    $(".answers").text("");
+    $(".feedback").text(comment);
+    $(".correctAns").text(currentAns);
+    $(".image").html("<img src='assets/images/" + ansImg + "'>");
 
     // Answer Display Countdown Timer
 
@@ -156,8 +172,13 @@ var game = {
     $("#correct").text(correct);
     $("#incorrect").text(incorrect);
     $("#missed").text(missed);
-    $("#startButton").show();
+    $("#startButton").text("Play Again").show();
     $(".results").show();
+    $(".question").hide();
+    $(".answers").hide();
+    $(".correctAns").hide();
+    $(".feedback").hide();
+    $(".image").html("");
   }
 };
 
