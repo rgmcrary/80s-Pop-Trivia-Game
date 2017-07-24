@@ -58,7 +58,7 @@ var quesAns = [
       {
         choice: "The Breakfast Club",
         isAnswer: true,
-        ansImg: "breakfastclub.jpg"
+        ansImg: "breakfastclub.png"
       }
     ]
   }
@@ -127,7 +127,7 @@ var game = {
         clearInterval(interval);
         game.ansCompare();
       }
-    }, 1000);
+    }, 2000);
   },
 
   // Answer Check
@@ -163,7 +163,7 @@ var game = {
       } else {
         game.updateDisplay();
       }
-    }, 3000);
+    }, 1000);
   },
 
   // Win/Loss Scoring
