@@ -89,9 +89,9 @@ var game = {
     $(".question").text(quesAns[quesIndex].ques);
 
     // Reset Screen
-    $(".feedback").text("");
+    $(".feedback").text("").show();
     $(".answers").text("");
-    $(".correctAns").text("");
+    $(".correctAns").text("").show();
     $(".question").show();
     $(".answers").show();
     $(".image").html("");
@@ -163,7 +163,7 @@ var game = {
       } else {
         game.updateDisplay();
       }
-    }, 1000);
+    }, 2000);
   },
 
   // Win/Loss Scoring
