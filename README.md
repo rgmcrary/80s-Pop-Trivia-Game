@@ -1,4 +1,4 @@
-80's Trivia Game
+80's Pop Trivia Game
 
 Test your 80's knowledge in this fast-faced trivia game. 
 
